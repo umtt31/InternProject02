@@ -29,9 +29,11 @@ namespace InternProject02.Controllers
         [Route("/[controller]/{id}")]
         public IActionResult Details(int id)
         {
-            var announcement = _context.Announcements.SingleOrDefault(a => a.Id == id);
-
-            return View(_mapper.Map<AnnouncementCommentSamePageViewModel>(announcement));
+            var announcement = _context.Announcements.Find(id);
+            var announcementCommentSamePage = _mapper.Map<AnnouncementCommentSamePageViewModel>(announcement);
+            announcementCommentSamePage.AnnouncementId = id;
+            
+            return View(announcementCommentSamePage);
         }
 
         public IActionResult Add()
@@ -52,17 +54,17 @@ namespace InternProject02.Controllers
         [HttpPost]
         public IActionResult SaveComment(AnnouncementCommentSamePageViewModel announcementCommentSamePageViewModel)
         {
-            var announcement = _mapper.Map<AnnouncementModel>(announcementCommentSamePageViewModel);
+            var announcement = _context.Announcements.Find(announcementCommentSamePageViewModel.AnnouncementId);
             var comment = _mapper.Map<AnnouncementCommentModel>(announcementCommentSamePageViewModel);
 
-            announcement.
+            comment.AnnouncementCommentCreateDate = DateTime.Now;
 
-            _context.Announcements.Add(announcement);
+            announcement.Comments.Add(comment);
             _context.AnnouncementComments.Add(comment);
 
             _context.SaveChanges();
 
-            return RedirectToAction("Details", announcement.Id);
+            return RedirectToAction("Index", announcement.Id);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using InternProject02.Models.Announcement;
+using System.ComponentModel;
 
 namespace InternProject02.ViewModels.Announcement
 {
@@ -16,6 +17,6 @@ namespace InternProject02.ViewModels.Announcement
 
         public string? AnnouncementSubject { get; set; }
 
-        public List<AnnouncementCommentModel>? Comments { get; set; }
+        public List<AnnouncementCommentModel> Comments { get; set; } = new List<AnnouncementCommentModel>();
     }
 }

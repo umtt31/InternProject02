@@ -3,7 +3,7 @@
     let loadComments = () => {
         $.ajax({
             type: "GET",
-            url: `LoadComment/${Announcement}`,
+            url: `LoadComment`,
             success: data => {
                 $("#comments").empty()
                 $.each(data, (index, item) => {
@@ -31,13 +31,15 @@
     $("#btnSave").click(() => {
         var name = $("#Name").val();
         var comment = $("#Comment").val();
+        var announcementId = $("#announcement_id").val()
 
-        var JsonData = { "AnnouncementCommentName": name, "AnnouncementCommentBody": comment }
+        var JsonData = { "AnnouncementCommentName": name, "AnnouncementCommentBody": comment, "AnnouncementId": announcementId }
+        console.log(JsonData)
 
         $.ajax({
             type: "POST",
             url: "SaveComment",
-            data: [JsonData, Announcement.],
+            data: JsonData,
             success: data => { console.log(data); loadComments(); $("#Name").val(""); $("#Comment").val(""); },
             error: err => { console.log(err.message) },
         })

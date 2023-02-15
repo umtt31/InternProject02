@@ -4,14 +4,19 @@
     ViewData["Title"] = "Details";
 }
 
-@model AnnouncementCommentSamePageViewModel
+@section Scripts {
+    <script>
+        
+    </script>
+}
 
+@model AnnouncementCommentSamePageViewModel
 
 <h1>@Model.AnnouncementTitle</h1>
 
 <div class="row mb-5">
     <div class="col-8">
-        <div class="card text-center">
+        <div class="card text-center mb-5">
             <div class="card-header">
                 @Model.AnnouncementCreator
             </div>
@@ -23,9 +28,25 @@
                 @Model.AnnouncementCreateDate.ToLongDateString()
             </div>
         </div>
+
+        <div>
+            <form asp-action="SaveComment" method="POST">
+
+                <input asp-for="AnnouncementId" type="hidden" value="@(Model.AnnouncementId)" />
+
+                <div class="mb-3">
+                    <label asp-for="AnnouncementCommentName" class="form-label">Name: </label>
+                    <input class="form-control" asp-for="AnnouncementCommentName">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="AnnouncementCommentBody" class="form-label">Comment: </label>
+                    <textarea class="form-control" asp-for="AnnouncementCommentBody"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="btnSave">Submit</button>
+            </form>
+        </div>
+
     </div>
-
-    <form asp-controller="Announcement" asp-action="SaveComment" method="POST">
-
-    </form>
 </div>
