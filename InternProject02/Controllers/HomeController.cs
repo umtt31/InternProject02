@@ -4,15 +4,13 @@ using System.Diagnostics;
 
 namespace InternProject02.Controllers
 {
+    [Route("[controller]/[action]")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        [Route("/")]
+        [Route("/Home")]
+        [Route("/Home/Index")]
         public IActionResult Index()
         {
             return View();

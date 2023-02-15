@@ -1,0 +1,33 @@
+﻿@using InternProject02.ViewModels.Announcement;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<AnnouncementViewModel>
+
+<h1>Announcements</h1>
+
+<div class="row">
+    <div class="col-8">
+        @foreach (var item in Model)
+        {
+            <div class="card text-center">
+                <div class="card-header">
+                    @item.AnnouncementCreator
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.AnnouncementTitle</h5>
+                    <p class="card-text">@item.AnnouncementSubject</p>
+                    <a href="/Announcement/@(item.Id)" class="btn btn-primary">Details</a>
+                </div>
+                <div class="card-footer text-muted">
+                    @item.AnnouncementCreateDate.ToLongDateString()
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<a class="btn btn-primary" href="/Announcement/add">Create New Announcement</a>
+
