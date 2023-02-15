@@ -1,7 +1,42 @@
-﻿
+﻿@using InternProject02.ViewModels.Announcement;
+
 @{
     ViewData["Title"] = "Add";
 }
 
-<h1>Add</h1>
+@model AnnouncementViewModel
+
+<div class="row">
+    <div class="col-8">
+        <h1>Create an Announcement</h1>
+        <form asp-action="Add" method="POST">
+            <div class="mb-3">
+                <label asp-for="AnnouncementCreator" class="form-label">Name: </label>
+                <input asp-for="AnnouncementCreator" class="form-control" >
+                <span class="text-danger" asp-validation-for="AnnouncementCreator"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AnnouncementTitle" class="form-label">Title: </label>
+                <input asp-for="AnnouncementTitle" class="form-control" >
+                <span class="text-danger" asp-validation-for="AnnouncementTitle"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AnnouncementSubject" class="form-label">Subject: </label>
+                <input asp-for="AnnouncementSubject" class="form-control">
+                <span class="text-danger" asp-validation-for="AnnouncementSubject"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AnnouncementBody" class="form-label">Message: </label>
+                <textarea asp-for="AnnouncementBody" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="AnnouncementBody"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
 

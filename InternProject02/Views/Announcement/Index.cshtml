@@ -6,10 +6,10 @@
 
 @model List<AnnouncementViewModel>
 
-<h1>Announcements</h1>
 
 <div class="row">
     <div class="col-8">
+        <h1>Announcements</h1>
         @foreach (var item in Model)
         {
             <div class="card text-center">
@@ -29,5 +29,5 @@
     </div>
 </div>
 
-<a class="btn btn-primary" href="/Announcement/add">Create New Announcement</a>
+<a class="btn btn-primary mt-3" href="/Announcement/add">Create New Announcement</a>
 

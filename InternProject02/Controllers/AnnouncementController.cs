@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using InternProject02.Models;
+using InternProject02.Models.Announcement;
 using InternProject02.Utils;
 using InternProject02.ViewModels.Announcement;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +22,11 @@ namespace InternProject02.Controllers
         public IActionResult Index()
         {
             var announcements = _context.Announcements.ToList();
-            
+
             return View(_mapper.Map<List<AnnouncementViewModel>>(announcements));
         }
 
+        [Route("/[controller]/{id}")]
         public IActionResult Details(int id)
         {
             var announcement = _context.Announcements.SingleOrDefault(a => a.Id == id);
@@ -40,7 +42,13 @@ namespace InternProject02.Controllers
         [HttpPost]
         public IActionResult Add(AnnouncementViewModel newAnnouncement)
         {
+            newAnnouncement.AnnouncementCreateDate = DateTime.Now;
+            _context.Add(_mapper.Map<AnnouncementModel>(newAnnouncement));
+            _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
+        
     }
 }

@@ -1,7 +1,27 @@
-﻿
+﻿@using InternProject02.ViewModels.Announcement;
+
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+@model AnnouncementViewModel
 
+
+<h1>@Model.AnnouncementTitle</h1>
+
+<div class="row mb-5">
+    <div class="col-8">
+        <div class="card text-center">
+            <div class="card-header">
+                @Model.AnnouncementCreator
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.AnnouncementSubject</h5>
+                <p class="card-text">@Model.AnnouncementBody</p>
+            </div>
+            <div class="card-footer text-muted">
+                @Model.AnnouncementCreateDate.ToLongDateString()
+            </div>
+        </div>
+    </div>
+</div>
