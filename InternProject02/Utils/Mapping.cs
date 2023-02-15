@@ -10,6 +10,9 @@ namespace InternProject02.Utils
         {
             CreateMap<AnnouncementModel, AnnouncementViewModel>().ReverseMap();
             CreateMap<AnnouncementCommentModel, AnnouncementCommentViewModel>().ReverseMap();
+            CreateMap<AnnouncementCommentSamePageViewModel, AnnouncementModel>().ReverseMap();
+            CreateMap<AnnouncementCommentSamePageViewModel, AnnouncementCommentModel>().ReverseMap();
+
         }
     }
 }

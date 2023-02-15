@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-@model AnnouncementViewModel
+@model AnnouncementCommentSamePageViewModel
 
 
 <h1>@Model.AnnouncementTitle</h1>
@@ -24,4 +24,8 @@
             </div>
         </div>
     </div>
+
+    <form asp-controller="Announcement" asp-action="SaveComment" method="POST">
+
+    </form>
 </div>

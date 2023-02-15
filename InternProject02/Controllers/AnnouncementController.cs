@@ -31,7 +31,7 @@ namespace InternProject02.Controllers
         {
             var announcement = _context.Announcements.SingleOrDefault(a => a.Id == id);
 
-            return View(_mapper.Map<AnnouncementViewModel>(announcement));
+            return View(_mapper.Map<AnnouncementCommentSamePageViewModel>(announcement));
         }
 
         public IActionResult Add()
@@ -49,6 +49,20 @@ namespace InternProject02.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        [HttpPost]
+        public IActionResult SaveComment(AnnouncementCommentSamePageViewModel announcementCommentSamePageViewModel)
+        {
+            var announcement = _mapper.Map<AnnouncementModel>(announcementCommentSamePageViewModel);
+            var comment = _mapper.Map<AnnouncementCommentModel>(announcementCommentSamePageViewModel);
+
+            announcement.
+
+            _context.Announcements.Add(announcement);
+            _context.AnnouncementComments.Add(comment);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", announcement.Id);
+        }
     }
 }
