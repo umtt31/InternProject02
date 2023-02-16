@@ -5,23 +5,20 @@
 }
 
 @section Scripts {
-    <script>
-        
-    </script>
+    <script src="~/js/_announcementcommentformpartialview.js"></script>
 }
 
 @model AnnouncementCommentSamePageViewModel
 
-<h1>@Model.AnnouncementTitle</h1>
+<h1>@Model.AnnouncementCreator</h1>
 
 <div class="row mb-5">
     <div class="col-8">
         <div class="card text-center mb-5">
             <div class="card-header">
-                @Model.AnnouncementCreator
+                @Model.AnnouncementTitle
             </div>
             <div class="card-body">
-                <h5 class="card-title">@Model.AnnouncementSubject</h5>
                 <p class="card-text">@Model.AnnouncementBody</p>
             </div>
             <div class="card-footer text-muted">
@@ -30,22 +27,22 @@
         </div>
 
         <div>
-            <form asp-action="SaveComment" method="POST">
+            @*<form asp-action="SaveComment" method="POST">*@
 
-                <input asp-for="AnnouncementId" type="hidden" value="@(Model.AnnouncementId)" />
+            <input id="announcement_id" type="hidden" value="@(Model.AnnouncementId)" />
 
                 <div class="mb-3">
-                    <label asp-for="AnnouncementCommentName" class="form-label">Name: </label>
-                    <input class="form-control" asp-for="AnnouncementCommentName">
+                    <label @*asp-for="AnnouncementCommentName"*@ for="Name" class="form-label">Name: </label>
+                    <input class="form-control" id="Name" "@*asp-for="AnnouncementCommentName"*@>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="AnnouncementCommentBody" class="form-label">Comment: </label>
-                    <textarea class="form-control" asp-for="AnnouncementCommentBody"></textarea>
+                    <label @*asp-for="AnnouncementCommentBody"*@ for="Comment" class="form-label">Comment: </label>
+                    <textarea class="form-control" @*asp-for="AnnouncementCommentBody"*@ id="Comment"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary" id="btnSave">Submit</button>
-            </form>
+            @*</form>*@
         </div>
 
     </div>

@@ -1,4 +1,6 @@
-﻿namespace InternProject02.Models.Announcement
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace InternProject02.Models.Announcement
 {
     public class AnnouncementModel
     {
@@ -12,8 +14,6 @@
 
         public string? AnnouncementBody { get; set; }
 
-        public string? AnnouncementSubject { get; set; }
-
-        public List<AnnouncementCommentModel>? Comments { get; set; }
+        public ICollection<AnnouncementCommentModel> Comments { get; set; } = new List<AnnouncementCommentModel>();
     }
 }

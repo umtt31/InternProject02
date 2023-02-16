@@ -15,8 +15,6 @@ namespace InternProject02.ViewModels.Announcement
 
         public string? AnnouncementBody { get; set; }
 
-        public string? AnnouncementSubject { get; set; }
-
-        public List<AnnouncementCommentModel> Comments { get; set; } = new List<AnnouncementCommentModel>();
+        public ICollection<AnnouncementCommentModel> Comments { get; set; } = new List<AnnouncementCommentModel>();
     }
 }

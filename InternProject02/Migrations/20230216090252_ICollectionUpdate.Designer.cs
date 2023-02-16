@@ -4,6 +4,7 @@ using InternProject02.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternProject02.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230216090252_ICollectionUpdate")]
+    partial class ICollectionUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,12 +42,12 @@ namespace InternProject02.Migrations
                     b.Property<string>("AnnouncementCommentName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AnnouncementModelId")
+                    b.Property<int>("AnnouncementId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnnouncementModelId");
+                    b.HasIndex("AnnouncementId");
 
                     b.ToTable("AnnouncementComments");
                 });
@@ -76,13 +79,13 @@ namespace InternProject02.Migrations
 
             modelBuilder.Entity("InternProject02.Models.Announcement.AnnouncementCommentModel", b =>
                 {
-                    b.HasOne("InternProject02.Models.Announcement.AnnouncementModel", "AnnouncementModel")
+                    b.HasOne("InternProject02.Models.Announcement.AnnouncementModel", "Announcement")
                         .WithMany("Comments")
-                        .HasForeignKey("AnnouncementModelId")
+                        .HasForeignKey("AnnouncementId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AnnouncementModel");
+                    b.Navigation("Announcement");
                 });
 
             modelBuilder.Entity("InternProject02.Models.Announcement.AnnouncementModel", b =>

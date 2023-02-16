@@ -4,6 +4,7 @@ using InternProject02.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternProject02.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230216093208_RelationAdded")]
+    partial class RelationAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,6 +41,9 @@ namespace InternProject02.Migrations
 
                     b.Property<string>("AnnouncementCommentName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AnnouncementId")
+                        .HasColumnType("int");
 
                     b.Property<int>("AnnouncementModelId")
                         .HasColumnType("int");

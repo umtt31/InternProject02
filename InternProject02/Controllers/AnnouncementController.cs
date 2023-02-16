@@ -32,7 +32,7 @@ namespace InternProject02.Controllers
             var announcement = _context.Announcements.Find(id);
             var announcementCommentSamePage = _mapper.Map<AnnouncementCommentSamePageViewModel>(announcement);
             announcementCommentSamePage.AnnouncementId = id;
-            
+
             return View(announcementCommentSamePage);
         }
 
@@ -45,10 +45,11 @@ namespace InternProject02.Controllers
         public IActionResult Add(AnnouncementViewModel newAnnouncement)
         {
             newAnnouncement.AnnouncementCreateDate = DateTime.Now;
+            newAnnouncement.Comments = new List<AnnouncementCommentModel>() { };
             _context.Add(_mapper.Map<AnnouncementModel>(newAnnouncement));
             _context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { newAnnouncement.Id });
         }
 
         [HttpPost]
@@ -58,13 +59,11 @@ namespace InternProject02.Controllers
             var comment = _mapper.Map<AnnouncementCommentModel>(announcementCommentSamePageViewModel);
 
             comment.AnnouncementCommentCreateDate = DateTime.Now;
-
             announcement.Comments.Add(comment);
-            _context.AnnouncementComments.Add(comment);
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", announcement.Id);
+            return RedirectToAction("Details", new { announcement.Id });
         }
     }
 }
