@@ -12,11 +12,5 @@ namespace InternProject02.Models
         public DbSet<AnnouncementModel> Announcements { get; set; }
         public DbSet<AnnouncementCommentModel> AnnouncementComments { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<AnnouncementModel>()
-                .HasMany(c => c.Comments)
-                .WithOne(e => e.AnnouncementModel);
-        }
     }
 }

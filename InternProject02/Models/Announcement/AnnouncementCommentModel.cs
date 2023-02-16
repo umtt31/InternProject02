@@ -11,5 +11,7 @@
         public string? AnnouncementCommentBody { get; set; }
 
         public AnnouncementModel AnnouncementModel { get; set; }
+
+        public int AnnouncementId { get; set; }
     }
 }

@@ -31,17 +31,17 @@
 
             <input id="announcement_id" type="hidden" value="@(Model.AnnouncementId)" />
 
-                <div class="mb-3">
-                    <label @*asp-for="AnnouncementCommentName"*@ for="Name" class="form-label">Name: </label>
-                    <input class="form-control" id="Name" "@*asp-for="AnnouncementCommentName"*@>
-                </div>
+            <div class="mb-3">
+                <label @*asp-for="AnnouncementCommentName"*@ for="Name" class="form-label">Name: </label>
+                <input class="form-control" id="Name" "@*asp-for="AnnouncementCommentName"*@>
+            </div>
 
-                <div class="mb-3">
-                    <label @*asp-for="AnnouncementCommentBody"*@ for="Comment" class="form-label">Comment: </label>
-                    <textarea class="form-control" @*asp-for="AnnouncementCommentBody"*@ id="Comment"></textarea>
-                </div>
+            <div class="mb-3">
+                <label @*asp-for="AnnouncementCommentBody"*@ for="Comment" class="form-label">Comment: </label>
+                <textarea class="form-control" @*asp-for="AnnouncementCommentBody"*@ id="Comment"></textarea>
+            </div>
 
-                <button type="submit" class="btn btn-primary" id="btnSave">Submit</button>
+            <button @*type="submit"*@ class="btn btn-primary" id="btnSave">Submit</button>
             @*</form>*@
         </div>
 
